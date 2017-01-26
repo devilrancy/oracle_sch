@@ -9,7 +9,8 @@
         -o[=file_name]                  send results to file instead of stdout.
         -i[=in_file_name]               provide the input file for comparision purpose.
         -d[=db_file_name]               provide the db file for comparision purpose.
-        -r[=results_file_name]          provide this file to store comparision results to this file. But, if not provided by default it will print the results to console.
+        -r[=results_file_name]          provide this file to store comparision results to this file. 
+                                        But, if not provided by default it will print the results to console.
         --compare-schemas               enable this flag for comparing the input and output files provided.
         --only-compare                  only compares two schema files without generating schema files from DB.
 
@@ -24,5 +25,5 @@
         ==> For only comparing the files without generating any schema files from db:
         python oracle_schema.py -d=out_db.txt -i=in_db.txt --only-compare
 
-        ==> For comparing the files without generating any schema files and store the results to a results file
+        ==> For comparing the files without generating any schema files and store to a results file
         python oracle_schema.py -d=out_db.txt -i=in_db.txt -r=results_file.txt --only-compare
