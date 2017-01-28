@@ -1,16 +1,37 @@
-create table dept(
-      deptno     number(2,0),
-      dname      varchar2(14),
-      constraint pk_dept primary key (deptno)
-    );
-
-create table emp(
-      empno    number(4,0),
-      ename    varchar2(10),
-      job      varchar2(9),
-      mgr      number(4,0),
-      comm     number(7,2),
-      deptno   number(2,0),
-      constraint pk_emp primary key (empno),
-      constraint fk_deptno foreign key (deptno) references dept (deptno)
-    );
+CREATE TABLE aais_edt_dtls_t (
+	edt_dtls_id NUMBER(11,0) NOT NULL,
+	aais_txn_id NUMBER(11,0) NOT NULL,
+	order_id NUMBER(11,0) NOT NULL,
+	core_order_num VARCHAR2 (20),
+	due_date NUMBER(11,0) NOT NULL,
+	tn VARCHAR2 (10) DEFAULT ' ' NOT NULL,
+	old_tn VARCHAR2 (10),
+	core_cable_name VARCHAR2 (30) DEFAULT ' ' NOT NULL,
+	core_cable_no NUMBER(11,0) NOT NULL,
+	core_addr_id NUMBER(11,0) NOT NULL,
+	oa_cable_name VARCHAR2 (30),
+	oa_cable_no NUMBER(11,0),
+	ivapp_addr_id NUMBER(11,0) NOT NULL,
+	state VARCHAR2 (2) NOT NULL,
+	switch_clli VARCHAR2 (30),
+	cancel_flag NUMBER(11,0),
+	core_txn_id NUMBER(11,0),
+	PRIMARY KEY (edt_dtls_id),
+	FOREIGN KEY (AAIS_TXN_ID) REFERENCES AAIS_TXN_T
+);
+CREATE  INDEX XIE1AAIS_EDT_DTLS ON AAIS_EDT_DTLS_T (TN);
+CREATE  INDEX XIE2AAIS_EDT_DTLS ON AAIS_EDT_DTLS_T (IVAPP_ADDR_ID);
+CREATE  INDEX XIE3AAIS_EDT_DTLS ON AAIS_EDT_DTLS_T ();
+CREATE  INDEX XIE4AAIS_EDT_DTLS ON AAIS_EDT_DTLS_T (CORE_ORDER_NUM);
+CREATE  INDEX XIE5AAIS_EDT_DTLS ON AAIS_EDT_DTLS_T (
+    ASC
+);
+CREATE  INDEX XIF807AAIS_EDT_DTL ON AAIS_EDT_DTLS_T (AAIS_TXN_ID);
+CREATE TABLE aais_if_log_t (
+	aais_if_log_id NUMBER(11,0) NOT NULL,
+	aais_txn_id NUMBER(11,0) NOT NULL,
+	txn_msg CLOB NOT NULL,
+	PRIMARY KEY (aais_if_log_id),
+	FOREIGN KEY (AAIS_TXN_ID)
+	        REFERENCES AAIS_TXN_TN_IN
+);

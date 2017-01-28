@@ -42,16 +42,16 @@ import os
 import os.path
 import time
 import re
-# try:
-# 	import cx_Oracle
-# except:
-# 	ex = sys.exc_info()
-# 	serr = 'Exception: %s: %s' % (ex[0], ex[1])
-# 	print serr
-# 	print """\nModule: cx_Oracle not found. Please make sure the module is installed before using this program.
-# 	This Module is used to connect and use this program with Oracle db.
-# 	"""
-# 	exit()
+try:
+	import cx_Oracle
+except:
+	ex = sys.exc_info()
+	serr = 'Exception: %s: %s' % (ex[0], ex[1])
+	print serr
+	print """\nModule: cx_Oracle not found. Please make sure the module is installed before using this program.
+	This Module is used to connect and use this program with Oracle db.
+	"""
+	exit()
 # import cx_Oracle
 
 USE_JYTHON = 0
@@ -483,7 +483,11 @@ def main():
 	stdout = sys.stdout
 	out_f = None
 	out_fn = get_option_value('-o')
-	out_f = open(out_fn, 'w')
+	try:
+		out_f = open(out_fn, 'w')
+	except:
+		print (USAGE)
+		return 0
 	sys.stdout = out_f
 	CREATED_FILES.append(out_fn)
 
