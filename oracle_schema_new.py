@@ -525,11 +525,8 @@ def schema_compare(in_f,out_f):
 	cmp1.extend(cmp3)
 	cmp2,cmp4 = main_generator(out_f)
 	cmp2.extend(cmp4)
-	# for item1 in cmp1:
-	# 	print item1
-	# for item2 in cmp2:
-	# 	print item2
-	table_results = [x for x in cmp2 if x not in cmp1]
+	s = set(sorted(cmp1))
+	table_results = [x for x in sorted(cmp2) if x not in s]
 	return table_results
 
 def main():
