@@ -42,6 +42,7 @@ import os
 import os.path
 import time
 import re
+import itertools
 try:
 	import sqlparse
 except:
@@ -521,10 +522,15 @@ def main_generator(file_r):
 		return table_list,index_list
 
 def schema_compare(in_f,out_f):
+	table_results =[]
 	cmp1,cmp3 = main_generator(in_f)
 	cmp1.extend(cmp3)
 	cmp2,cmp4 = main_generator(out_f)
 	cmp2.extend(cmp4)
+	# for item in cmp2:
+	# 	matcher = re.compile(item,re.IGNORECASE)
+	# 	if any(filter(matcher.match, cmp1)):
+	# 		table_results.extend([item])
 	s = set(sorted(cmp1))
 	table_results = [x for x in sorted(cmp2) if x not in s]
 	return table_results
