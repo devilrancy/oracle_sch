@@ -276,11 +276,17 @@ class CodeDiff(object):
     Manages a pair of source files and generates a single html diff page comparing
     the contents.
     """
-    pygmentsCssFile = "deps/codeformats/%s.css"
-    diffCssFile = "deps/diff.css"
-    diffJsFile = "deps/diff.js"
-    resetCssFile = "deps/reset.css"
-    jqueryJsFile = "deps/jquery.min.js"
+    # pygmentsCssFile = "deps/codeformats/%s.css"
+    # diffCssFile = "deps/diff.css"
+    # diffJsFile = "deps/diff.js"
+    # resetCssFile = "deps/reset.css"
+    # jqueryJsFile = "deps/jquery.min.js"
+
+    pygmentsCssFile = "https://unpkg.com/diff2html_compare@1.0.0/codeformats/%s.css"
+    diffCssFile = "https://unpkg.com/diff2html_compare@1.0.0/diff.css"
+    diffJsFile = "https://unpkg.com/diff2html_compare@1.0.0/diff.js"
+    resetCssFile = "https://unpkg.com/diff2html_compare@1.0.0/reset.css"
+    jqueryJsFile = "https://unpkg.com/diff2html_compare@1.0.0/jquery.min.js"
 
     def __init__(self, fromfile, tofile, fromtxt=None, totxt=None, name=None):
         self.filename = name
