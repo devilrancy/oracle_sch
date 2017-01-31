@@ -32,3 +32,11 @@ CREATE TABLE aais_edt_dtls_t (
 	PRIMARY KEY (edt_dtls_id),
 	FOREIGN KEY (AAIS_TXN_ID) REFERENCES AAIS_TXN_T
 );
+CREATE TABLE aais_db_new_add (
+	aais_if_log_db NUMBER(11,0) NOT NULL,
+	aais_txn_db NUMBER(11,0) NOT NULL,
+	txn_msg_db CLOB NOT NULL,
+	PRIMARY KEY (aais_if_log_db),
+	FOREIGN KEY (AAIS_TXN_DB)
+	        REFERENCES AAIS_TXN_TN_DB
+);
