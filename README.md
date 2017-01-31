@@ -1,4 +1,5 @@
-##### This is for Oracle Schema generation and comparision with another schama file.
+# Oracle Schema Compare
+This is for Oracle Schema generation and comparision with another schama file.
 
 **Usage:**
 
